@@ -5,10 +5,10 @@ module.exports = {
   mode: 'development',
   target: 'node',
   externals: [nodeExternals()],
-  entry: './src/index.ts',
+  entry: './src/server.ts',
   output: {
     path: path.join(__dirname, "dist"),
-    filename: "index.js"
+    filename: "server.js"
   },
   module: {
     rules: [{

@@ -4,6 +4,7 @@
     "outDir": "./dist",
     "strict": true,
     "esModuleInterop": true,
+    "allowJs": true,
   },
   "include": [
     "./src/**/*.ts"
