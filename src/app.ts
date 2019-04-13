@@ -5,24 +5,11 @@ import fs from 'fs';
 import path from 'path';
 import { router as indexRouter } from './router/index';
 import { router as sakeRouter } from './router/sake';
-import { MONGO_URL, DB_NAME } from './config';
-import mongoose from 'mongoose';
+import { connectDB } from './db';
 
 const app = express();
 
-// - TODO: 別ファイルに切り分ける
-mongoose.connect(`${MONGO_URL}/${DB_NAME}`, {
-    // - TODO: 環境変数使う
-    auth: { authSource: 'admin' },
-    user: 'root',
-    pass: 'example',
-    useNewUrlParser: true
-});
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', () => {
-    console.log('connected');
-});
+connectDB();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

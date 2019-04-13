@@ -1,0 +1,2 @@
+export MONGO_PASS=example
+export MONGO_USER=root
