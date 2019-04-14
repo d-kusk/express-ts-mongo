@@ -6,4 +6,4 @@ const temperature = new Schema({
     temperature: String
 });
 
-export default mongoose.model('Temperature', temperature);
+export const temperatureModel = mongoose.model('Temperature', temperature);
