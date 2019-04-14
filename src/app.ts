@@ -3,8 +3,7 @@ import express from 'express';
 import morgan from 'morgan';
 import fs from 'fs';
 import path from 'path';
-import { router as indexRouter } from './router/index';
-import { router as sakeRouter } from './router/sake';
+import { router } from './router/index';
 import { connectDB } from './db';
 
 const app = express();
@@ -14,8 +13,7 @@ connectDB();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use('/sake', sakeRouter);
-app.use('/', indexRouter);
+app.use('/api', router);
 
 app.use(
     morgan('dev', {

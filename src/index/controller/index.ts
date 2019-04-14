@@ -6,5 +6,3 @@ export class IndexController {
         res.json(params);
     };
 }
-
-export default IndexController;
