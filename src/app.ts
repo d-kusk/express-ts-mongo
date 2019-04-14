@@ -6,7 +6,7 @@ import path from 'path';
 import { router } from './router/index';
 import { connectDB } from './db';
 
-const app = express();
+export const app = express();
 
 connectDB();
 
@@ -14,6 +14,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/api', router);
+app.use((req, res) => {
+    res.status(404);
+    res.json({
+        message: '404 Not Found',
+        requestPath: req.path
+    });
+});
 
 app.use(
     morgan('dev', {
@@ -31,5 +38,3 @@ app.use(
         })
     })
 );
-
-export default app;
