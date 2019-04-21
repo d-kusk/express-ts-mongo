@@ -4,6 +4,7 @@ import morgan from 'morgan';
 import fs from 'fs';
 import path from 'path';
 import { router } from './router/index';
+import { router as apiRouter } from './router/api';
 import { connectDB } from './db';
 
 export const app = express();
@@ -13,7 +14,8 @@ connectDB();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use('/api', router);
+app.use('/', router);
+app.use('/api', apiRouter);
 app.use((req, res) => {
     res.status(404);
     res.json({
