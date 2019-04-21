@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const sakeType = new Schema({
     _id: Number,
-    type: String
+    type: { type: String, required: true }
 });
 
 export const sakeTypeModel = mongoose.model('SakeType', sakeType);

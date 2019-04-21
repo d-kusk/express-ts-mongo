@@ -2,8 +2,8 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 const sake = new Schema({
-    brand: String,
-    type: { type: Number, ref: 'SakeType' },
+    brand: { type: String, required: true },
+    type: { type: Number, ref: 'SakeType', required: true },
     impressions: [
         {
             temperature: { type: Number, ref: 'Temperature' },

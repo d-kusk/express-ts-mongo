@@ -1,6 +1,5 @@
 import Repository from '../../utility/Repository';
 import { sakeModel } from '../model/sake';
-import { resolve } from 'path';
 
 class SakeRepository extends Repository {
     constructor() {

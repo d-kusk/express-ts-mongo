@@ -1,6 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
 import SakeRepository from '../Repository/SakeRepository';
-import SakeTypeRepository from '../Repository/SakeTypeRepository';
 import { sakeModel } from '../model/sake';
 
 export class SakeController {
@@ -21,16 +20,15 @@ export class SakeController {
         res: Response,
         next: NextFunction
     ) => {
-        const kuheiji = new sakeModel({
-            brand: '醸し人九平次',
-            type: 9,
-            impressions: [{ temperature: 7, impression: 'めちゃうま' }]
+        const sake = new sakeModel(req.body);
+        sake.save(err => {
+            if (err) {
+                return res.status(400).json({ errors: err });
+            }
+            return res.json({
+                status: 'success',
+                result: sake
+            });
         });
-
-        kuheiji.save(err => {
-            if (err) throw err;
-        });
-
-        res.json({ msg: 'success' });
     };
 }

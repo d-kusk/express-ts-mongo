@@ -7,7 +7,7 @@ export class TemperatureController {
         res: Response,
         next: NextFunction
     ) => {
-        const temperatureList = await new TemperatureRepository().find();
+        const temperatureList = await new TemperatureRepository().findAll();
         res.json(temperatureList);
     };
 }

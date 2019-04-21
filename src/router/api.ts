@@ -9,7 +9,7 @@ router.get('/sake/temperature/list', TemperatureController.list);
 
 router.get('/sake/type/list', SakeTypesController.list);
 
-router.get('/sake/create', SakeController.create);
+router.post('/sake/create', SakeController.create);
 router.get('/sake/list', SakeController.list);
 
 export { router };
