@@ -7,7 +7,7 @@ export class SakeTypesController {
         res: Response,
         next: NextFunction
     ) => {
-        const sakeList = await new SakeTypeRepository().find();
-        res.json(sakeList);
+        const sakeTypeList = await new SakeTypeRepository().findAll();
+        res.json(sakeTypeList);
     };
 }

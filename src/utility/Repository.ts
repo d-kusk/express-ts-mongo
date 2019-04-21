@@ -7,12 +7,21 @@ class Repository {
         this.modelName = modelName;
     }
 
-    public find() {
+    public findAll() {
         return this.modelName.find({}, (err, resulst) => {
             if (err) {
                 throw err;
             }
             return resulst;
+        });
+    }
+
+    public findById(id: Number) {
+        return this.modelName.findById(id, (err, result) => {
+            if (err) {
+                throw err;
+            }
+            return result;
         });
     }
 }

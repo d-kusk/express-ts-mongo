@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import SakeRepository from '../Repository/SakeRepository';
+import SakeTypeRepository from '../Repository/SakeTypeRepository';
 import { sakeModel } from '../model/sake';
 
 export class SakeController {
@@ -8,8 +9,8 @@ export class SakeController {
         res: Response,
         next: NextFunction
     ) => {
-        const sakeList = await new SakeRepository().find();
-        res.json(sakeList);
+        const sakeList = await new SakeRepository().findAll();
+        return res.json(sakeList);
     };
 
     /**
